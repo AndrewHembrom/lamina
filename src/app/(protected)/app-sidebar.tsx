@@ -11,6 +11,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import {
@@ -21,6 +22,7 @@ import {
   Presentation,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const items = [
@@ -63,9 +65,17 @@ const projects = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { open } = useSidebar();
   return (
     <Sidebar collapsible="icon" variant="floating">
-      <SidebarHeader>Logo</SidebarHeader>
+      <SidebarHeader>
+        <div className="flex items-center gap-2">
+          <Image src="/logo.png" alt="logo" width={40} height={40}></Image>
+          {open && (
+            <h1 className="text-primary/80 text-xl font-bold">Lamina</h1>
+          )}
+        </div>
+      </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
@@ -120,14 +130,16 @@ export function AppSidebar() {
                 );
               })}
               <div className="h-2"></div>
-              <SidebarMenuItem>
-                <Link href="/create">
-                  <Button size="sm" variant={"outline"} className="w-fit">
-                    <Plus />
-                    Create Project
-                  </Button>
-                </Link>
-              </SidebarMenuItem>
+              {open && (
+                <SidebarMenuItem>
+                  <Link href="/create">
+                    <Button size="sm" variant={"outline"} className="w-fit">
+                      <Plus />
+                      Create Project
+                    </Button>
+                  </Link>
+                </SidebarMenuItem>
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
