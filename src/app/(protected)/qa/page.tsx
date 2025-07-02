@@ -2,9 +2,9 @@
 import React from "react";
 import { useUser } from "@clerk/nextjs";
 
-const DashboardPage = () => {
-  const { user } = useUser();
-  return <div>{user?.firstName}</div>;
+const QAPage = () => {
+    const { user } = useUser();
+    return <div>QA Page</div>;
 };
 
-export default DashboardPage;
+export default QAPage;
