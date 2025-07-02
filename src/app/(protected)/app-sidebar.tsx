@@ -50,16 +50,16 @@ const items = [
 
 const projects = [
   {
-    title: "Dashboard",
+    name: "Dashboard",
   },
   {
-    title: "Q&A",
+    name: "Q&A",
   },
   {
-    title: "Meetings",
+    name: "Meetings",
   },
   {
-    title: "Billing",
+    name: "Billing",
   },
 ];
 
@@ -110,7 +110,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {projects.map((project) => {
                 return (
-                  <SidebarMenuItem key={project.title}>
+                  <SidebarMenuItem key={project.name}>
                     <SidebarMenuButton asChild>
                       <div>
                         <div
@@ -121,9 +121,9 @@ export function AppSidebar() {
                             },
                           )}
                         >
-                          {project.title[0]}
+                          {project.name[0]}
                         </div>
-                        <span>{project.title}</span>
+                        <span>{project.name}</span>
                       </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
